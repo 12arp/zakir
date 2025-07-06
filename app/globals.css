@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========== Default Theme (Light) ========== */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+  }
+}
+
+/* ========== 🍃 Updated Dark Theme ========== */
+@layer base {
+  .dark {
+    --background: 100 20% 6%;
+    --foreground: 90 30% 90%;
+
+    --card: 100 15% 10%;
+    --card-foreground: 90 30% 90%;
+
+    --popover: 100 15% 10%;
+    --popover-foreground: 90 30% 90%;
+
+    --primary: 74 61% 55%;               /* #a8d439 */
+    --primary-foreground: 100 20% 6%;
+
+    --secondary: 100 15% 15%;
+    --secondary-foreground: 90 30% 90%;
+
+    --muted: 100 10% 20%;
+    --muted-foreground: 90 20% 70%;
+
+    --accent: 74 40% 30%;
+    --accent-foreground: 90 30% 90%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 90 10% 25%;
+    --input: 90 10% 25%;
+
+    --ring: 74 61% 55%;
+  }
+}
+
+/* ========== Orange Theme ========== */
+@layer base {
+  :root {
+    --background: 120 40% 98%;
+    --foreground: 120 20% 15%;
+
+    --card: 120 40% 98%;
+    --card-foreground: 120 20% 15%;
+
+    --popover: 120 40% 98%;
+    --popover-foreground: 120 20% 15%;
+
+    --primary: 120 60% 40%;
+    --primary-foreground: 120 40% 98%;
+
+    --secondary: 100 30% 90%;
+    --secondary-foreground: 120 60% 40%;
+
+    --muted: 100 20% 95%;
+    --muted-foreground: 120 15% 40%;
+
+    --accent: 100 40% 90%;
+    --accent-foreground: 120 60% 40%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 100 30% 98%;
+
+    --border: 120 20% 85%;
+    --input: 120 20% 85%;
+    --ring: 120 60% 40%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 120 20% 10%;
+    --foreground: 100 30% 90%;
+
+    --card: 120 20% 15%;
+    --card-foreground: 100 30% 90%;
+
+    --popover: 120 20% 10%;
+    --popover-foreground: 100 30% 90%;
+
+    --primary: 120 60% 40%;
+    --primary-foreground: 100 30% 90%;
+
+    --secondary: 120 20% 20%;
+    --secondary-foreground: 100 30% 90%;
+
+    --muted: 120 20% 20%;
+    --muted-foreground: 100 30% 70%;
+
+    --accent: 120 20% 20%;
+    --accent-foreground: 100 30% 90%;
+
+    --destructive: 0 72.2% 50.6%;
+    --destructive-foreground: 100 30% 90%;
+
+    --border: 120 20% 20%;
+    --input: 120 20% 20%;
+    --ring: 120 60% 40%;
+  }
+}
+
+/* ========== Shadows ========== */
+.shadow-light {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.085);
+}
+
+.shadow-dark {
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.141);
+}
+
+/* ========== Global Element Styling ========== */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
