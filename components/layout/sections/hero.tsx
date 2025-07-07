@@ -70,7 +70,7 @@ export const HeroSection = () => {
             <h1 className="drop-shadow-lg text-white">
               Welcome to
               <span className="text-transparent px-2 bg-gradient-to-r from-green-400 to-lime-500 bg-clip-text drop-shadow-lg">
-                Sahu Metals
+                Sahu Metals.
               </span>
               <br />Your trusted agricultural equipment manufacturer.
             </h1>
