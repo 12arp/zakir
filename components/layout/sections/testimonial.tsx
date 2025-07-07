@@ -14,7 +14,7 @@ const stats = [
     isDynamic: true,
   },
   {
-    count: 97%,
+    count: 2500,
     label: "Of our clients recommend us",
     icon: "/thumbs-up.png",
     isDynamic: false,
