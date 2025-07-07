@@ -72,12 +72,12 @@ export const HeroSection = () => {
               <span className="text-transparent px-2 bg-gradient-to-r from-green-400 to-lime-500 bg-clip-text drop-shadow-lg">
                 Sahu Metals
               </span>
-              <br />Your trusted agriculture equipment manufacturer
+              <br />Your trusted agricultural equipment manufacturer.
             </h1>
           </div>
 
           <p className="max-w-screen-sm text-center lg:text-left text-base sm:text-lg md:text-xl text-white drop-shadow-md">
-            We supply top quality tractors planters harvesters and more. We offer reliable sales leasing and maintenance for all your farming needs.
+            We provide top quality rotavators planters harvesters and other farming machines with trusted sales and service across Rajasthan and North India.
           </p>
 
           <div className="space-y-4 md:space-y-0 md:space-x-4 text-center lg:text-left">

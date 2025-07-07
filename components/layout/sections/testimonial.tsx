@@ -1,160 +1,128 @@
 "use client";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Star } from "lucide-react";
-import { useState, useEffect } from "react";//dynamic counter fgtrrtytr
+import { useEffect, useState } from "react";
 
-interface ReviewProps {
-  image: string;
-  name: string;
-  comment: string;
-  rating: number;
-}
+// Global count configuration
+const START_TIMESTAMP = new Date("2025-07-07T00:00:00Z").getTime(); // UTC
+const BASE_COUNT = 5000;
 
-const reviewList: ReviewProps[] = [
+// Stats array
+const stats = [
   {
-    image: "/61ee283f-278d-43e8-8c23-8e0cdbbc61d6.png",
-    name: "Ramesh Kumar",
-    comment:
-      "The tractor I bought from Sahu Metals is powerful and fuel-efficient. It has made ploughing my fields much easier and faster.",
-    rating: 5.0,
+    count: 10000, // Only this will be dynamically updated
+    label: "Customers we have served",
+    icon: "/handshake.png",
+    isDynamic: true,
   },
   {
-    image: "/61ee283f-278d-43e8-8c23-8e0cdbbc61d6.png",
-    name: "Sunita Devi",
-    comment:
-      "The rotavator and seed drill are of excellent quality. The team guided me well and the equipment is easy to use.",
-    rating: 4.9,
+    count: 97,
+    label: "Of our clients recommend us",
+    icon: "/thumbs-up.png",
+    isDynamic: false,
   },
   {
-    image: "/61ee283f-278d-43e8-8c23-8e0cdbbc61d6.png",
-    name: "Ajay Singh",
-    comment:
-      "I am very happy with the after-sales service. The spare parts are genuine and delivered quickly.",
-    rating: 4.8,
+    count: 35,
+    label: "Years of meeting client needs",
+    icon: "/biceps.png",
+    isDynamic: false,
   },
 ];
 
-const DynamicCounter = () => {
-  const [count, setCount] = useState(500);
+// Live customer count calculation
+const getLiveCount = () => {
+  const now = Date.now();
+  const elapsedMinutes = Math.floor((now - START_TIMESTAMP) / (1000 * 600));
+  return BASE_COUNT + elapsedMinutes;
+};
+
+// Counter Component
+const AnimatedCounter = ({ index }: { index: number }) => {
+  const [count, setCount] = useState(BASE_COUNT);
   const [isVisible, setIsVisible] = useState(false);
 
+  // Animate only the first (index 0) counter
   useEffect(() => {
+    if (index !== 0) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
 
-    const element = document.getElementById("testimonials");
-    if (element) {
-      observer.observe(element);
-    }
+    const el = document.getElementById(`counter-${index}`);
+    if (el) observer.observe(el);
 
     return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
+      if (el) observer.unobserve(el);
     };
-  }, []);
+  }, [index]);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || index !== 0) return;
 
-    const target = Math.floor(Math.random() * 501) + 500; // Random number between 500-1000
-    const duration = 2000; // 2 seconds
+    const finalCount = getLiveCount();
+    const duration = 2000;
     const steps = 60;
-    const increment = target / steps;
-    let current = 500;
+    const increment = (finalCount - BASE_COUNT) / steps;
+    let current = BASE_COUNT;
+    let step = 0;
 
-    const timer = setInterval(() => {
+    const animation = setInterval(() => {
+      step++;
       current += increment;
-      if (current >= target) {
-        setCount(target);
-        clearInterval(timer);
+      if (step >= steps) {
+        setCount(finalCount);
+        clearInterval(animation);
+
+        const liveTimer = setInterval(() => {
+          setCount(getLiveCount());
+        }, 60 * 1000);
+
+        return () => clearInterval(liveTimer);
       } else {
         setCount(Math.floor(current));
       }
     }, duration / steps);
 
-    return () => clearInterval(timer);
-  }, [isVisible]);
+    return () => clearInterval(animation);
+  }, [isVisible, index]);
 
-  return <span className="text-primary">{count}+</span>;
+  return (
+    <div className="text-4xl font-bold text-green-600" id={`counter-${index}`}>
+      {count}+
+    </div>
+  );
 };
 
 export const TestimonialSection = () => {
   return (
-    <section id="testimonials" className="container pt-0 pb-24 sm:pt-0 sm:pb-32 mb-16 sm:mb-24">
-      <div className="text-center mb-8">
-        <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-          Testimonials
-        </h2>
+    <section className="pt-0 pb-16 mb-20 bg-white" id="testimonials">
+      <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-center mb-8">
+        Why Farmers Trust Sahu Metals
+      </h2>
 
-        <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-          Hear What Our <DynamicCounter /> Clients Say
-        </h2>
+      <div className="mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center max-w-6xl">
+        {stats.map((stat, index) => (
+          <div key={index}>
+            <div className="bg-green-100 p-4 rounded-full inline-block mb-4">
+              <img
+                src={stat.icon}
+                alt="stat-icon"
+                className="w-8 h-8 object-contain"
+              />
+            </div>
+            {stat.isDynamic ? (
+              <AnimatedCounter index={index} />
+            ) : (
+              <div className="text-4xl font-bold text-green-600">
+                {stat.count}+
+              </div>
+            )}
+            <p className="mt-2 text-sm text-gray-700">{stat.label}</p>
+          </div>
+        ))}
       </div>
-
-      <Carousel
-        opts={{
-          align: "start",
-        }}
-        className="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto"
-      >
-        <CarouselContent>
-          {reviewList.map((review) => (
-            <CarouselItem
-              key={review.name}
-              className="md:basis-1/2 lg:basis-1/3"
-            >
-              <Card className="bg-muted/50 dark:bg-card">
-                <CardContent className="pt-6 pb-0">
-                  <div className="flex gap-1 pb-6">
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
-                  </div>
-                  {`"${review.comment}"`}
-                </CardContent>
-
-                <CardHeader>
-                  <div className="flex flex-row items-center gap-4">
-                    <Avatar>
-                      <AvatarImage src={review.image} alt={review.name} />
-                      <AvatarFallback>SV</AvatarFallback>
-                    </Avatar>
-
-                    <div className="flex flex-col">
-                      <CardTitle className="text-lg">{review.name}</CardTitle>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
     </section>
   );
 };

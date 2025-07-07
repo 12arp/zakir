@@ -12,19 +12,19 @@ import { SponsorsSection } from "@/components/layout/sections/sponsors";
 import { TestimonialSection } from "@/components/layout/sections/testimonial";
 
 export const metadata = {
-  title: "Sahu Metals - Agriculture Equipment Agency",
-  description: "Sahu Metals: Your trusted partner for agriculture equipment sales, leasing, and maintenance.",
+  title: "Sahu Metals - Agricultural Equipment Manufacturer",
+  description: "top quality rotavators planters harvesters and other farming machines with trusted sales and service across Rajasthan and North India.",
   openGraph: {
     type: "website",
     url: "https://sahumetals.com/",
-    title: "Sahu Metals - Agriculture Equipment Agency",
-    description: "Sahu Metals: Your trusted partner for agriculture equipment sales, leasing, and maintenance.",
+    title: "Sahu Metals - Agricultural Equipment Manufacturer",
+    description: "top quality rotavators planters harvesters and other farming machines with trusted sales and service across Rajasthan and North India.",
     images: [
       {
         url: "/hero-image-light.jpeg",
         width: 1200,
         height: 630,
-        alt: "Sahu Metals - Agriculture Equipment Agency",
+        alt: "Sahu Metals - Agricultural Equipment Manufacturer",
       },
     ],
   },

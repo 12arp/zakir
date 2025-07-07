@@ -9,8 +9,8 @@ import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sahu Metals - Agriculture Equipment Agency",
-  description: "Your trusted partner in agricultural excellence since 1990. We're committed to empowering farmers with innovative equipment solutions and exceptional service.",
+  title: "Sahu Metals - Agricultural Equipment Manufacturer",
+  description: "top quality rotavators planters harvesters and other farming machines with trusted sales and service across Kota, Rajasthan and North India.",
   icons: {
     icon: '/61ee283f-278d-43e8-8c23-8e0cdbbc61d6.png',
     apple: '/61ee283f-278d-43e8-8c23-8e0cdbbc61d6.png',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://sahumetals.com/",
-    title: "Sahu Metals - Agriculture Equipment Agency",
-    description: "Your trusted partner in agricultural excellence since 1990. We're committed to empowering farmers with innovative equipment solutions and exceptional service.",
+    title: "Sahu Metals - Agricultural Equipment Manufacturer",
+    description: "top quality rotavators planters harvesters and other farming machines with trusted sales and service across Kota, Rajasthan and North India",
     images: [
       {
         url: "/61ee283f-278d-43e8-8c23-8e0cdbbc61d6.png",
@@ -28,13 +28,6 @@ export const metadata: Metadata = {
         alt: "Sahu Metals Logo",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "https://sahumetals.com/",
-    title: "Sahu Metals - Agriculture Equipment Agency",
-    description: "Your trusted partner in agricultural excellence since 1990. We're committed to empowering farmers with innovative equipment solutions and exceptional service.",
-    images: ["/61ee283f-278d-43e8-8c23-8e0cdbbc61d6.png"],
   },
 };
 
