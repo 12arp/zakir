@@ -18,7 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Building2, Phone, Mail, Clock } from "lucide-react";
 import { FooterSection } from "@/components/layout/sections/footer";
 
-const BACKEND_URL = 'https://sahu-final.onrender.com';
+const BACKEND_URL = 'https://sahu-final-97r9.onrender.com';
 
 const formSchema = z.object({
   name: z.string().min(2).max(255),

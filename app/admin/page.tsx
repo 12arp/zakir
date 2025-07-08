@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 
-const BACKEND_URL = 'https://sahu-final.onrender.com';
+const BACKEND_URL = 'https://sahu-final-97r9.onrender.com';
 
 const getFullImageUrl = (imageUrl: string) => {
   if (!imageUrl) return '';

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ProductItem from "./ProductItem";
 
-const API_URL = 'https://sahu-final.onrender.com';
+const API_URL = 'https://sahu-final-97r9.onrender.com';
 
 export const ProductsSection = ({ limit }: { limit?: number }) => {
   const [products, setProducts] = useState<any[]>([]);

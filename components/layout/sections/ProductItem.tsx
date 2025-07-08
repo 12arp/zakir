@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useState } from "react";
 // import ProductGallery from "@/components/ProductGallery";
 
-const BACKEND_URL = 'https://sahu-final.onrender.com';
+const BACKEND_URL = 'https://sahu-final-97r9.onrender.com';
 
 interface ProductItemProps {
   product: {

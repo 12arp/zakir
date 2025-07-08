@@ -6,7 +6,7 @@ import Link from "next/link";
 import { FooterSection } from "@/components/layout/sections/footer";
 import { ExternalLink, ArrowUp, Phone, MessageCircle } from "lucide-react";
 
-const API_URL = 'https://sahu-final.onrender.com';
+const API_URL = 'https://sahu-final-97r9.onrender.com';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
