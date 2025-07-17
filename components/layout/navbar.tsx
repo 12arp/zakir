@@ -20,7 +20,7 @@ import {
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import Cookies from 'js-cookie';
+import { setTranslateCookie } from "@/lib/utils";
 
 interface RouteProps {
   href: string;
@@ -71,26 +71,18 @@ export const Navbar = () => {
     if (googtransCookie) {
       setCurrentLang(googtransCookie.includes('/hi') ? 'hi' : 'en');
     }
-    setIsLoggedIn(Cookies.get('adminAuth') === 'true');
+    setIsLoggedIn(document.cookie.includes('adminAuth=true'));
   }, []);
 
   const handleLogout = () => {
-    Cookies.remove('adminAuth');
+    document.cookie = 'adminAuth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
     setIsLoggedIn(false);
     window.location.href = '/';
   };
 
   const toggleLanguage = () => {
     const newLang = currentLang === 'en' ? 'hi' : 'en';
-    document.cookie = 'googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    document.cookie = 'googtrans=; path=/; domain=.' + window.location.hostname + '; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    
-    if (newLang === 'hi') {
-      document.cookie = 'googtrans=/en/hi; path=/; domain=.' + window.location.hostname;
-    }
-    
-    setCurrentLang(newLang);
-    window.location.reload();
+    setTranslateCookie(newLang);
   };
 
   const renderNavigationLinks = (onClick?: () => void) => (

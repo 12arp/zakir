@@ -132,7 +132,7 @@ export default function RootLayout({
           }
         `}</style>
         <Script
-          id="google-translate"
+          id="google-translate-init"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
@@ -143,6 +143,18 @@ export default function RootLayout({
                   layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                   autoDisplay: false
                 }, 'google_translate_element');
+              }
+
+              const host = window.location.hostname;
+              if (host.includes('sahumetals.in')) {
+                const googtransCookie = document.cookie.split('; ').find(row => row.startsWith('googtrans='));
+                if (googtransCookie && googtransCookie.includes('/en/hi')) {
+                  // Do nothing if the cookie is already set to Hindi
+                } else {
+                  // Reset to English
+                  document.cookie = 'googtrans=; path=/; domain=.sahumetals.in; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+                  document.cookie = 'googtrans=/en/en; path=/; domain=.sahumetals.in';
+                }
               }
             `,
           }}
