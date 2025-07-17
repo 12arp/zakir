@@ -7,18 +7,17 @@ export function cn(...inputs: ClassValue[]) {
 
 export function setTranslateCookie(lang: 'en' | 'hi') {
   const host = window.location.hostname;
-  const domain = host.includes('sahumetals.in') ? '.sahumetals.in' : host;
+  const domain = host.includes('sahumetals.in') ? '.sahumetals.in' : '';
 
-  // Reset the cookie
+  // Clear the cookie by setting its expiration date to the past
   document.cookie = `googtrans=; path=/; domain=${domain}; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+  document.cookie = `googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`; // Fallback for localhost
 
-  // Set the new cookie
   if (lang === 'hi') {
+    // Set the cookie to translate to Hindi
     document.cookie = `googtrans=/en/hi; path=/; domain=${domain}`;
-  } else {
-    document.cookie = `googtrans=/en/en; path=/; domain=${domain}`;
   }
 
-  // Reload the page to apply the new language
+  // Reload the page to apply the changes
   window.location.reload();
 }

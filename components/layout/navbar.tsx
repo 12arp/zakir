@@ -66,11 +66,8 @@ export const Navbar = () => {
   const handleClose = React.useCallback(() => setIsOpen(false), []);
 
   useEffect(() => {
-    const cookies = document.cookie.split(';');
-    const googtransCookie = cookies.find(cookie => cookie.trim().startsWith('googtrans='));
-    if (googtransCookie) {
-      setCurrentLang(googtransCookie.includes('/hi') ? 'hi' : 'en');
-    }
+    const googtransCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('googtrans='));
+    setCurrentLang(googtransCookie ? 'hi' : 'en');
     setIsLoggedIn(document.cookie.includes('adminAuth=true'));
   }, []);
 
