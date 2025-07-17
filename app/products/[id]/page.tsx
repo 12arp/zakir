@@ -38,6 +38,7 @@ interface Product {
   image?: string;
   title: string;
   description?: string;
+  link?: string;
   additionalImages?: string[];
   features?: string[];
   specifications?: {
@@ -174,6 +175,16 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 >
                   Send Enquiry
                 </button>
+                {product.link && (
+                  <a
+                    href={product.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                  >
+                    Brochure
+                  </a>
+                )}
               </div>
             )}
           </div>

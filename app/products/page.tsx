@@ -84,7 +84,7 @@ export default function ProductsPage() {
   return (
     <>
       <section className="container py-12 md:py-16">
-        <p className="text-primary text-center mb-2 tracking-wider">Products</p>
+        <p className="text-primary text-center mb-2 tracking-wider">Product</p>
         <h2 className="text-3xl md:text-4xl text-center font-bold mb-8">Our Products</h2>
         <div className="flex flex-col gap-12">
           {products.map((product, idx) => {
@@ -104,9 +104,10 @@ export default function ProductsPage() {
                         <Image
                           src={getFullImageUrl(images[selectedIndex])}
                           alt={product.title}
-                          width={100}
-                          height={190}
-                          className="object-contain w-auto h-56"
+                          width={300}
+                          height={300}
+                          quality={85}
+                          className="object-contain w-full h-64"
                         />
                       )}
                     </div>
