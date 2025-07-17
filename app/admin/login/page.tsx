@@ -23,7 +23,7 @@ export default function AdminLogin() {
     setLoading(true);
 
     // Check credentials
-    if (username === "admin12" && password === "Password21") {
+    if (username === "admin@sahu" && password === "Camel9@Pagdi") {
       // Set authentication cookie
       Cookies.set('adminAuth', 'true', { expires: 1 }); // Expires in 1 day
       // Redirect to admin dashboard
