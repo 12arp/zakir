@@ -175,20 +175,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 >
                   Send Enquiry
                 </button>
-                {product.link && (
-                  <a
-                    href={product.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-                  >
-                    Brochure
-                  </a>
-                )}
               </div>
             )}
+            
           </div>
         </div>
+
+        
         {product.specifications && product.specifications.length > 0 && (
           <div id="specifications" className="mt-12 rounded shadow p-6 bg-muted text-foreground">
             <h2 className="text-2xl font-bold mb-4">Technical Specifications</h2>
@@ -294,8 +287,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     >
                       Cancel
                     </Button>
-                    <Button 
-                      type="submit" 
+                    <Button
+                      type="submit"
                       name="submit"
                       className="!bg-green-600 !text-white"
                     >
@@ -308,6 +301,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           </div>
         )}
       </div>
+      
       <FooterSection />
     </>
   );
